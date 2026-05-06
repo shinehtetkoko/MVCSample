@@ -1,0 +1,34 @@
+﻿@model MVCSample.Models.LoginViewModel
+
+@{
+    Layout = "_EmptyLayout";
+    ViewData["Title"] = "Login Page";
+}
+
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-4 border p-4 shadow-sm rounded">
+            <h3 class="text-center mb-4">HR System Login</h3>
+            
+            <form action="/Account/Login" method="post">
+                
+                @* Anti-Forgery Token အတွက် ဒါလေး ထည့်ပေးရပါမယ် (Tag Helpers မသုံးလျှင်) *@
+                @Html.AntiForgeryToken()
+                <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
+
+                <!-- name attribute သည် Model ထဲက Property နာမည်နှင့် တူရပါမည် -->
+                <div class="mb-3">
+                    <label class="form-label">Employee Number</label>
+                    <input name="EmployeeNumber" class="form-control" type="number" required />
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label">Password</label>
+                    <input name="Password" class="form-control" type="password" required />
+                </div>
+
+                <button type="submit" class="btn btn-primary w-100">Sign In</button>
+            </form>
+        </div>
+    </div>
+</div>
